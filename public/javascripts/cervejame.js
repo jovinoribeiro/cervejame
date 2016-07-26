@@ -1,17 +1,19 @@
 var app = angular.module('CervejaMe', 
 	[
 		'ngRoute', 
+		'ui.bootstrap',
 		'ngResource',
 		'Cerveja.Beers',
 		'Cerveja.Beer',
 		'Cerveja.Breweries',
-		'Cerveja.Brewery'
+		'Cerveja.Brewery',
+		'Cerveja.Portfolio'
 	]);
 
 //Update this before commiting and deploing to Heroku
 
-//app.constant('CURRENT_BACKEND', 'http://localhost:3000');
-app.constant('CURRENT_BACKEND', 'http://cervejame.herokuapp.com');
+app.constant('CURRENT_BACKEND', 'http://localhost:3000');
+//app.constant('CURRENT_BACKEND', 'http://cervejame.herokuapp.com');
 
 app.config(['$routeProvider', function($routeProvider) {
 	$routeProvider 
@@ -20,7 +22,7 @@ app.config(['$routeProvider', function($routeProvider) {
 			controller: 'BeersCtrl',
 			controllerAs: 'beers'*/
 		})
-		.when('/beers', {
+		.when('/beers1', {
 			templateUrl: 'src/beers/beers.html',
 			controller: 'BeersCtrl',
 			controllerAs: 'beersCtrl'
@@ -52,6 +54,11 @@ app.config(['$routeProvider', function($routeProvider) {
 		})
 		.when('/breweries/zip/:zip', {
 			templateUrl: 'src/breweries/breweryzip.html'
+		})
+		.when('/beers', {
+			templateUrl: 'src/portfolio/portfolio.html',
+			controller: 'PortfolioCtrl',
+			controllerAs: 'portfolioCtrl'
 		})
 		.otherwise({
 			redirectTo: '/'
